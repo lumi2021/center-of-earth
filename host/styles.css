@@ -46,16 +46,33 @@ body {
     align-items: center;
 
     #planet {
+        position: relative;
         height: 300px;
         width: 300px;
         border-radius: 100%;
-    
-        background:
-            url(https://business4kingdom.com/wp-content/uploads/2023/06/de9c36295b3a3c1df6c075cb396607ae.gif),
-            radial-gradient(circle, rgba(0,243,255,1) 0%, rgba(0,119,255,1) 52%, rgba(0,38,91,1) 71%);
         
         background-size: contain;
         filter: blur(0.5px);
+        overflow: hidden;
+    }
+
+    #planet .ocean {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: radial-gradient(circle, rgba(0,243,255,1) 0%, rgba(0,119,255,1) 52%, rgba(0,38,91,1) 71%);
+    }
+
+    #planet .continent {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: url(https://upload.wikimedia.org/wikipedia/commons/9/95/World_map_green.png);
+        background-size: cover;
+        
+        animation: continent-animation 5s infinite cubic-bezier(0,0,0,0);
     }
 
 }
@@ -91,4 +108,13 @@ body {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50%      { opacity: 0; }
+}
+
+@keyframes continent-animation {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 200%;
+    }
 }
