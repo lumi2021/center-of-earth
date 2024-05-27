@@ -1,0 +1,189 @@
+#content-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#container {
+    position: relative;
+    width: 100vw;
+    height: 64px;
+    overflow-y: hidden;
+
+    padding-top: calc(100vh - 64px);
+}
+
+#surface {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+}
+
+#surface .sky-bg {
+    overflow: hidden;
+    position: absolute;
+    background: url("assets/game/sky.png");
+    background-size: auto 100%;
+    height: 100vh;
+    width: 100vw;
+}
+
+#surface .sky-bg .cloud {
+    position: absolute;
+    opacity: 0.75;
+
+    height: 200px;
+    width: 200px;
+
+    background: url("assets/game/cloud.png");
+    background-size: 100%;
+
+    animation: clouds 20s infinite cubic-bezier(1, 1, 1, 1);
+}
+
+#crust, #mantle, #core {
+    position: relative;
+    background-color: black;
+    top: 0;
+}
+
+#mantle, #core { top: -4px; margin-bottom: -4px; }
+
+#foreground-canvas { pointer-events: none; }
+
+p {
+    font-family: 'Devin Chavez Font', sans-serif;
+    color: white;
+    position: absolute;
+    text-shadow: -3px -3px 2px #000, 3px -3px 2px #000, -3px 3px 2px #000, 3px 3px 2px #000;
+    text-align: justify;
+    user-select: none;
+}
+
+p .title {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#information {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#questionScreen {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    user-select: none;
+}
+
+#questionScreen #timeBar {
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+    background-color: red;
+    width: 100%;
+}
+
+#questionScreen h1 {
+    text-align: center;
+    margin: 0;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#questionScreen .text {
+
+    background-color: white;
+    width: calc(100% - 60px);
+    height: calc(30% - 20px);
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+#questionScreen .options {
+
+    width: calc(100% - 20px);
+    height: calc(50% - 20px);
+
+}
+
+#questionScreen .options .option {
+    background-color: white;
+    width: calc(100% - 20);
+    height: 20%;
+    margin: 10px;
+    border-radius: 20px;
+
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#questionScreen .options:not(.disabled):not(.answered) .option:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+#questionScreen .options.disabled .option {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: transparent;
+}
+
+#questionScreen .options.answered .option.wrong {
+    background-color: red;
+}
+#questionScreen .options.answered .option.correct {
+    background-color: green;
+}
+
+#questionScreen.shown {
+    display: block;
+    animation: questionShowing 1s;
+}
+#questionScreen.hidden {
+    display: block;
+    animation: questionHidding 1s;
+}
+#questionScreen.noDisplay {
+    display: none;
+}
+
+@keyframes clouds {
+    0% {
+        transform: translateX(-200px);
+    }
+    100% {
+        transform: translateX(calc(100vw + 200px));
+    }
+}
+
+@keyframes questionShowing {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes questionHidding {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
