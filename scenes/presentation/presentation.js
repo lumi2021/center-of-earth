@@ -36,6 +36,7 @@ export class PresentationScene extends Scene {
     {
         const m = () => {
                 removeEventListener('click', m);
+                removeEventListener('touchend', m);
     
                 const presentText = document.querySelector("#presentation-text");
     
@@ -46,6 +47,7 @@ export class PresentationScene extends Scene {
         };
 
         addEventListener('click', m);
+        addEventListener('touchend', m);
     }
 
     setupGame()
@@ -64,6 +66,7 @@ export class PresentationScene extends Scene {
             else
             {
                 removeEventListener('click', clickEv);
+                removeEventListener('touchend', clickEv);
                 this.warp();
             }
 
@@ -72,6 +75,7 @@ export class PresentationScene extends Scene {
         };
 
         addEventListener('click', clickEv);
+        addEventListener('touchend', clickEv);
     }
 
     updateAnimation(step)

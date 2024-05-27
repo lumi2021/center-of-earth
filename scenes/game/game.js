@@ -72,6 +72,7 @@ export class GameScene extends Scene {
 
         this.unbind = this.onClick.bind(this);
         window.addEventListener('click', this.unbind);
+        window.addEventListener('touchend', this.unbind);
 
         document.querySelector("#questionScreen").addEventListener('animationend', () => {
             let a = document.querySelector("#questionScreen");
@@ -165,6 +166,7 @@ export class GameScene extends Scene {
         if (this.characters[0].depth >= 149)
         {
             window.removeEventListener('click', this.unbind);
+            window.removeEventListener('touchend', this.unbind);
             this.changeSceneMethod(Congratulations);
         }
 
@@ -298,6 +300,7 @@ export class GameScene extends Scene {
             }
 
             options[i].addEventListener('click', onOptionClicked.bind(this));
+            options[i].addEventListener('touchend', onOptionClicked.bind(this));
         }
 
         optionsContainer.classList.add("disabled");
