@@ -309,10 +309,10 @@ export class GameScene extends Scene {
             enabled = true;
         }
 
-        let time = 5;
+        let time = 10;
         const ontime = () => {
             time -= 1/60;
-            timer.style.width = (time / 5 * 100) + '%';
+            timer.style.width = (time / 10 * 100) + '%';
 
             if (time <= 0) destroy();
         }
