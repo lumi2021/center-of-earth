@@ -205,8 +205,8 @@ export class GameScene extends Scene {
             {
                 "text" : "Qual é a camada mais interna da Terra?",
                 "ops" : [
-                    "Núcleo Superior",
                     "Núcleo Inferior",
+                    "Núcleo Superior",
                     "Núcleo Externo",
                     "Manto Interno"
                 ]

@@ -11,7 +11,7 @@ function main()
 {
     const params = new URLSearchParams(window.location.search);
 
-    if (window.mobileCheck()) requestFullScreen();
+    //if (window.mobileCheck()) requestFullScreen();
 
     if (params.has('scene'))
     {
