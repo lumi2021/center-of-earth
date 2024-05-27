@@ -12,6 +12,9 @@ function main()
     const params = new URLSearchParams(window.location.search);
 
     //if (window.mobileCheck()) requestFullScreen();
+    document.addEventListener('gesturestart', function (e) {
+        e.preventDefault();
+    });
 
     if (params.has('scene'))
     {
